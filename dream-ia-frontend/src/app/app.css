@@ -1,0 +1,127 @@
+/* NAVBAR */
+.navbar {
+  background: #1e1e2f;
+  padding: 30px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* FORMULARIO*/
+.form {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+textarea {
+  min-height: 150px;
+  resize: none;
+}
+
+/* ERROR */
+.error-msg {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+/* BOTONES */
+.logo-btn {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.publish-btn {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-btn-left {
+  position: absolute;
+  top: 30px;
+  right: 30px; /* 👈 por eso está a la izquierda */
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn-right {
+  position: absolute;
+  top: 30px;
+  left: 30px; 
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+
+.sidebars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex; /* 👈 divide en 2 */
+  pointer-events: none; /* 👈 no bloquea clicks */
+}
+
+.sidebar-left {
+  width: 50vw;
+  height: 100%;
+  background: white;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+  transform: translateX(-100%);
+}
+
+.sidebar-right {
+  width: 50vw;
+  height: 100%;
+  background: white;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+  transform: translateX(100%);
+}
+
+.sidebar-right h2 {
+  text-align: center;
+}
+
+.sidebar-left h2 {
+  text-align: center;
+}
+
+/* CUANDO SE ABRE */
+.sidebar-left.open {
+  transform: translateX(0);
+}
+
+.sidebar-right.open {
+  transform: translateX(0);
+}

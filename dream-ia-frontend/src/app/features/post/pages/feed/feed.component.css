@@ -1,0 +1,16 @@
+.feed-container {
+    width: 500px;
+    margin: 100 auto;
+    padding: 50px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

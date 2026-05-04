@@ -1,0 +1,48 @@
+<header class="navbar">
+  <button class="logo-btn" (click)="openLeft()">
+    Dream IA
+  </button>
+
+  <button class="publish-btn" (click)="openRight()">
+    Publicar
+  </button>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebars-container">
+  <div class="sidebar-left" [class.open]="leftOpen">
+    <button class="close-btn-left" (click)="closeLeft()">❮</button>
+    <h2>Dream IA</h2>
+  </div>
+
+  <div class="sidebar-right" [class.open]="rightOpen">
+    <button class="close-btn-right" (click)="closeRight()">❯</button>
+    <h2>Publicar</h2>
+
+    <div class="form">
+       <input type="text"
+        placeholder="Autor"
+        [(ngModel)]="author"
+        (input)="errorMessage = ''">
+
+      <input type="text"
+        placeholder="Título"
+        [(ngModel)]="title"
+        (input)="errorMessage = ''">
+
+      <textarea
+        placeholder="Contenido"
+        [(ngModel)]="content"
+        (input)="errorMessage = ''"></textarea>
+
+      <p class="error-msg" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+      <button type="button" (click)="publish()">Publicar</button>
+    </div>
+  </div>
+</div>
+
+<app-feed></app-feed>
+
+
