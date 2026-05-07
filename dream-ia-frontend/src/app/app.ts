@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FeedComponent } from './features/post/pages/feed/feed.component';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,10 @@ import { PostService } from './features/post/services/post.service';
 })
 export class App {
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private http: HttpClient
+  ) {}
 
   leftOpen = false;
   rightOpen = false;
@@ -39,41 +43,72 @@ export class App {
   content = '';
   errorMessage = '';
 
-  publish() {
-    const post = {
-      nameUser: this.author?.trim(),
-      title: this.title?.trim(),
-      content: this.content?.trim()
-    };
+  dream = '';
 
-    if (!post.nameUser || !post.title || !post.content) {
-      this.errorMessage = 'Por favor completa todos los campos';
-      return;
-    }
+  respuesta: any = null;
+
+  publish() {
 
     this.errorMessage = '';
+
+    // Obtener valores con trim (sin optional chaining)
+    const nameUser = this.author?.trim() || '';
+    const title = this.title?.trim() || '';
+    const content = this.content?.trim() || '';
+
+    const post = {
+      nameUser: nameUser,
+      title: title,
+      content: content
+    };
+
+    if (!post.nameUser || post.nameUser.length === 0 || 
+        !post.title || post.title.length === 0 || 
+        !post.content || post.content.length === 0) {
+      this.errorMessage = 'Por favor completa todos los campos';
+      console.log('Validación fallida:', { nameUser, title, content });
+      return;
+    }
 
     this.postService.publish(post)
       .subscribe({
         next: () => {
-          // 🔥 IMPORTANTE: Notificar SOLO después de que la publicación fue exitosa
+          
           this.postService.notifyRefresh();
           
           // Limpiar formulario
           this.author = '';
           this.title = '';
           this.content = '';
+          this.errorMessage = '';
           
           // Cerrar sidebar
           this.rightOpen = false;
-          
-          // Limpiar mensaje de error por si acaso
-          this.errorMessage = '';
         },
-        error: (error) => {
-          console.error('Error al publicar:', error);
+        error: () => {
           this.errorMessage = 'Error al publicar. Intenta de nuevo.';
         }
       });
+  }
+
+  generarOpciones() {
+
+    if (!this.dream.trim()) return;
+
+    this.http.post<any>(
+      'http://localhost:8080/api/posts/opciones',
+      { dream: this.dream }
+    ).subscribe({
+
+      next: (res) => {
+        this.respuesta = res;
+      },
+
+      error: () => {
+        console.log('Error IA');
+      }
+
+    });
+
   }
 }

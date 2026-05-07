@@ -125,3 +125,31 @@ textarea {
 .sidebar-right.open {
   transform: translateX(0);
 }
+
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-area input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.input-area button {
+  padding: 12px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}

@@ -8,41 +8,102 @@
   </button>
 </header>
 
-<!-- SIDEBAR -->
 <div class="sidebars-container">
+
+  <!-- SIDEBAR IA -->
   <div class="sidebar-left" [class.open]="leftOpen">
-    <button class="close-btn-left" (click)="closeLeft()">❮</button>
+
+    <button class="close-btn-left" (click)="closeLeft()">
+      ❮
+    </button>
+
     <h2>Dream IA</h2>
+
+    <div class="ia-container">
+
+      <div class="messages" *ngIf="respuesta">
+
+        <h3>Inicios</h3>
+
+        <div *ngFor="let item of respuesta.inicios">
+          {{ item }}
+        </div>
+
+        <h3>Desarrollos</h3>
+
+        <div *ngFor="let item of respuesta.desarrollos">
+          {{ item }}
+        </div>
+
+        <h3>Finales</h3>
+
+        <div *ngFor="let item of respuesta.finales">
+          {{ item }}
+        </div>
+
+      </div>
+
+      <div class="input-area">
+
+        <input
+          type="text"
+          [(ngModel)]="dream"
+          placeholder="Describe tu sueño..."
+        />
+
+        <button (click)="generarOpciones()">
+          ➤
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
 
+  <!-- SIDEBAR PUBLICAR -->
   <div class="sidebar-right" [class.open]="rightOpen">
-    <button class="close-btn-right" (click)="closeRight()">❯</button>
+
+    <button class="close-btn-right" (click)="closeRight()">
+      ❯
+    </button>
+
     <h2>Publicar</h2>
 
     <div class="form">
-       <input type="text"
-        placeholder="Autor"
-        [(ngModel)]="author"
-        (input)="errorMessage = ''">
 
-      <input type="text"
+      <input
+        type="text"
+        placeholder="Autor"
+        [value]="author"
+        (input)="author = $any($event.target).value"
+      >
+
+      <input
+        type="text"
         placeholder="Título"
-        [(ngModel)]="title"
-        (input)="errorMessage = ''">
+        [value]="title"
+        (input)="title = $any($event.target).value"
+      >
 
       <textarea
         placeholder="Contenido"
-        [(ngModel)]="content"
-        (input)="errorMessage = ''"></textarea>
+        [value]="content"
+        (input)="content = $any($event.target).value"
+      ></textarea>
 
       <p class="error-msg" *ngIf="errorMessage">
         {{ errorMessage }}
       </p>
-      <button type="button" (click)="publish()">Publicar</button>
+
+      <button type="button" (click)="publish()">
+        Publicar
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 <app-feed></app-feed>
-
-
