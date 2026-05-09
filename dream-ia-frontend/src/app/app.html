@@ -11,55 +11,88 @@
 <div class="sidebars-container">
 
   <!-- SIDEBAR IA -->
-  <div class="sidebar-left" [class.open]="leftOpen">
+<!-- SIDEBAR IA -->
+<div class="sidebar-left" [class.open]="leftOpen">
 
-    <button class="close-btn-left" (click)="closeLeft()">
-      ❮
-    </button>
+  <button class="close-btn-left" (click)="closeLeft()">
+    ❮
+  </button>
 
-    <h2>Dream IA</h2>
+  <h2>Dream IA</h2>
 
-    <div class="ia-container">
+  <div class="ia-container">
 
-      <div class="messages" *ngIf="respuesta">
+    <!-- MENSAJES -->
+    <div class="messages">
 
-        <h3>Inicios</h3>
+      <div *ngFor="let msg of messages">
 
-        <div *ngFor="let item of respuesta.inicios">
-          {{ item }}
+        <!-- MENSAJE USUARIO -->
+        <div
+          class="user-message"
+          *ngIf="msg.type === 'user'"
+        >
+          {{ msg.text }}
         </div>
 
-        <h3>Desarrollos</h3>
+        <!-- RESPUESTA IA -->
+        <div
+          class="ia-message"
+          *ngIf="msg.type === 'ia'"
+        >
 
-        <div *ngFor="let item of respuesta.desarrollos">
-          {{ item }}
+          <h3>Inicios</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.inicios"
+          >
+            {{ item }}
+          </div>
+
+          <h3>Desarrollos</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.desarrollos"
+          >
+            {{ item }}
+          </div>
+
+          <h3>Finales</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.finales"
+          >
+            {{ item }}
+          </div>
+
         </div>
-
-        <h3>Finales</h3>
-
-        <div *ngFor="let item of respuesta.finales">
-          {{ item }}
-        </div>
-
-      </div>
-
-      <div class="input-area">
-
-        <input
-          type="text"
-          [(ngModel)]="dream"
-          placeholder="Describe tu sueño..."
-        />
-
-        <button (click)="generarOpciones()">
-          ➤
-        </button>
 
       </div>
 
     </div>
 
+    <!-- INPUT -->
+    <div class="input-area">
+
+      <input
+        type="text"
+        [(ngModel)]="dream"
+        placeholder="Describe tu sueño..."
+        (keyup.enter)="generarOpciones()"
+      />
+
+      <button (click)="generarOpciones()">
+        ➤
+      </button>
+
+    </div>
+
   </div>
+
+</div>
 
   <!-- SIDEBAR PUBLICAR -->
   <div class="sidebar-right" [class.open]="rightOpen">

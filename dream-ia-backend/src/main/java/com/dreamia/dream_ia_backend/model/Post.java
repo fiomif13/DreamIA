@@ -18,6 +18,8 @@ public class Post {
     private UUID id;
     private String nameUser;
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime createdAt;
 

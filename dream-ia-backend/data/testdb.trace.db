@@ -1,4 +1,0 @@
-2026-04-30 17:37:16.693254-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "STORIES" no encontrada
-Table "STORIES" not found; SQL statement:
-SELECT * FROM STORIES [42102-232]

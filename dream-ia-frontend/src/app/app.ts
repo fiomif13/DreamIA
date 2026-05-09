@@ -47,6 +47,8 @@ export class App {
 
   respuesta: any = null;
 
+  messages: any[] = [];
+
   publish() {
 
     this.errorMessage = '';
@@ -95,17 +97,41 @@ export class App {
 
     if (!this.dream.trim()) return;
 
+    const userMessage = this.dream;
+
+    // guardar mensaje usuario
+    this.messages.push({
+      type: 'user',
+      text: userMessage
+    });
+
+    // limpiar input
+    this.dream = '';
+
     this.http.post<any>(
       'http://localhost:8080/api/posts/opciones',
-      { dream: this.dream }
+      { dream: userMessage }
     ).subscribe({
 
       next: (res) => {
-        this.respuesta = res;
+
+        // guardar respuesta IA
+        this.messages.push({
+          type: 'ia',
+          data: res
+        });
+
       },
 
       error: () => {
-        console.log('Error IA');
+        this.messages.push({
+          type: 'ia',
+          data: {
+            inicios: ['La IA está ocupada ahora mismo 😭'],
+            desarrollos: [],
+            finales: []
+          }
+        });
       }
 
     });
