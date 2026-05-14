@@ -39,7 +39,7 @@ public class IAService {
         try {
             // El SDK maneja la URL, la versión y los headers por ti
             GenerateContentResponse response = client.models.generateContent(
-                "gemini-2.5-flash", // O "gemini-3-flash-preview" según lo que quieras
+                "gemini-2.5-flash",
                 prompt,
                 null
             );

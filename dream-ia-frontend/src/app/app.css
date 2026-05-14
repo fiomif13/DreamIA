@@ -13,9 +13,9 @@
 
 /* BOTONES */
 .logo-btn {
-  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  background: linear-gradient(90deg, #3cac5b, #147d37);
 
-  color: white;
+  color: rgb(255, 255, 255);
 
   border: none;
 
@@ -23,15 +23,15 @@
 
   border-radius: 20px;
 
-  font-size: 25px;
+  font-size: 20px;
 
   cursor: pointer;
 }
 
 .publish-btn {
-  background: linear-gradient(90deg, #22c55e, #16a34a);
+  background: linear-gradient(90deg, #3cac5b, #147d37);
 
-  color: white;
+  color: rgb(255, 255, 255);
 
   border: none;
 
@@ -66,7 +66,7 @@
 
   height: 100vh;
 
-  background: white;
+  background:  #1e1e2f;
 
   transition: transform 0.3s ease;
 
@@ -104,6 +104,8 @@
 .sidebar-right h2 {
   text-align: center;
 
+  color: white;
+  
   margin-top: 20px;
 }
 
@@ -115,6 +117,8 @@
   right: 30px;
 
   background: none;
+
+  color: #ffffff;
 
   border: none;
 
@@ -130,6 +134,8 @@
   left: 30px;
 
   background: none;
+
+  color: #ffffff;
 
   border: none;
 
@@ -168,15 +174,17 @@
 
 /* MENSAJE USUARIO */
 .user-message {
-  align-self: flex-end;
+  margin-left: auto;
 
-  background: #4f46e5;
+  background: #BDBDA3;
 
-  color: white;
+  color: rgb(0, 0, 0);
 
   padding: 12px 16px;
 
   border-radius: 16px;
+
+  width: fit-content;
 
   max-width: 80%;
 
@@ -207,6 +215,8 @@
   border-radius: 10px;
 
   margin-bottom: 10px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 /* INPUT CHAT */
@@ -247,9 +257,9 @@
 
   cursor: pointer;
 
-  background: #4f46e5;
+  background: #373474;
 
-  color: white;
+  color: rgb(254, 254, 255);
 }
 
 /* FORMULARIO PUBLICAR */
@@ -277,9 +287,32 @@
 }
 
 .form textarea {
-  min-height: 150px;
+  min-height: 300px;
 
   resize: none;
+}
+
+.publish-story-btn {
+
+  width: fit-content;
+
+  align-self: center;
+
+  padding: 12px 24px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: linear-gradient(90deg, #3cac5b, #147d37);
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
 }
 
 /* ERROR */

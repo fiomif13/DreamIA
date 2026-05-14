@@ -16,7 +16,9 @@ import java.util.Map;
 @RequestMapping("/api/posts")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
-
+    // clase PostService que creé en el archivo PostService
+    // Esta clase tiene una variable llamada postService que guardará un objeto tipo PostService
+    // postService es una variable que guarda un objeto tipo PostService
     private final PostService postService;
     private final IAService iaService;
 
@@ -34,13 +36,13 @@ public class PostController {
     @Operation(summary = "Crear un cuento")
     @PostMapping
     public Post createPost(@RequestBody Post post) {
-    return postService.save(post);
+        return postService.save(post);
     }
 
     @PostMapping("/opciones")
     public OpcionesCuentoDTO generar(@RequestBody Map<String, String> body) {
         return iaService.generarOpciones(body.get("dream"));
-    }  
+    }
 }
 
 

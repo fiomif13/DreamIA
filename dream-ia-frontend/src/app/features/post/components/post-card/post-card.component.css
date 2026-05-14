@@ -1,27 +1,94 @@
-.card {
-  max-width: 500px;   /* ancho máximo */
-  width: 100%;        /* que sea responsive */
-  margin: 60px auto 15px auto; /* centrado + separación */
-  background: #D9D9D9;
+.card { /* selector { propiedades: valores} */
+  max-width: 500px;   /* Define el ancho MÁXIMO que puede tener el elemento */
+  width: 100%;        /*  Hace que el elemento intente ocupar el 100% del espacio disponible. */
+  margin: 60px auto 15px auto; 
+  /* Propiedad margin:
+     Agrega espacio EXTERNO alrededor del elemento.
+
+     Los valores van en este orden:
+     arriba | derecha | abajo | izquierda
+
+     60px = espacio arriba
+     auto = centra horizontalmente
+     15px = espacio abajo
+     auto = centra horizontalmente otra vez
+
+     El "auto" funciona para centrar porque el ancho ya está definido. */
+
+  background: #D9D9D9; /* Cambia el color de fondo del elemento. */
   padding: 20px;
+  /* Propiedad padding:
+     Agrega espacio INTERNO entre el contenido y el borde.
+     Hace que el texto no quede pegado a los bordes. */
+
   border-radius: 12px;
+  /* Propiedad border-radius:
+     Redondea las esquinas.
+     Mientras más alto el número, más redondeado. */
+
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  /* Propiedad box-shadow:
+     Agrega sombra alrededor del elemento.
+
+     Valores:
+     0 = desplazamiento horizontal
+     4px = desplazamiento vertical
+     10px = desenfoque
+     rgba(...) = color de la sombra
+
+     rgba significa:
+     red, green, blue, alpha(transparencia) */
+
   margin-bottom: 10px;
+  /* Propiedad margin-bottom:
+     Agrega espacio SOLO debajo del elemento.
+
+     Ojo:
+     Aquí estás sobrescribiendo parcialmente el margin anterior.
+     Porque antes ya habías puesto margin con 15px abajo. */
 }
 
-.card h3 {
+.card h3 { /* Selector:
+     Aplica estilos SOLO a los h3 que estén dentro de .card */
+
   margin: 0 0 10px 0;
+  /* Espacio externo:
+     arriba 0
+     derecha 0
+     abajo 10px
+     izquierda 0 */
+
   font-size: 18px;
+   /* Tamaño de letra:
+     18px significa que el texto será más grande */
 }
 
-.card p {
-  margin: 0 0 10px 0;
+.card p {/* Selector:
+     Aplica estilos SOLO a los párrafos <p> dentro de .card */
+
+  margin: 0 0 10px 0; /* Espacio debajo del párrafo para separarlo */
+
   color: #333;
 }
 
 .footer {
-  display: flex;
+   /* Selector:
+     Aplica estilos a elementos con class="footer" */
+
+  display: flex; 
+  /* Propiedad display:flex:
+     Activa Flexbox.
+     Hace más fácil acomodar elementos horizontalmente. */
+
   justify-content: space-between;
+   /* Propiedad justify-content:
+     Distribuye elementos horizontalmente.
+
+     space-between:
+     pone uno a la izquierda y otro a la derecha,
+     dejando espacio en medio. */
+
   font-size: 12px;
+  /* Tamaño de texto pequeño */
   color: gray;
 }
