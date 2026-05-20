@@ -1,0 +1,172 @@
+<header class="navbar">
+  <button class="logo-btn" (click)="openLeft()">
+    Dream IA
+  </button>
+
+  <button class="publish-btn" (click)="openRight()">
+    Publicar
+  </button>
+</header>
+
+<div class="sidebars-container">
+
+  <!-- SIDEBAR IA -->
+<div class="sidebar-left" [class.open]="leftOpen" #sidebarLeft>
+
+  <button class="close-btn-left" (click)="closeLeft()">
+    ❮
+  </button>
+
+  <h2>Dream IA</h2>
+
+  <div class="ia-container">
+
+    <!-- MENSAJES -->
+    <div class="messages">
+
+      <div *ngFor="let msg of messages">
+
+        <!-- MENSAJE USUARIO -->
+        <div
+          class="user-message"
+          *ngIf="msg.type === 'user'"
+        >
+          {{ msg.text }}
+        </div>
+
+        <!-- RESPUESTA IA -->
+        <div
+          class="ia-message"
+          *ngIf="msg.type === 'ia' && !msg.data?.loading"
+        >
+
+          <h3>Inicios</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.inicios; let i = index"
+          >
+            {{ i + 1 }}. {{ item }}
+          </div>
+
+          <h3>Desarrollos</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.desarrollos; let i = index"
+          >
+            {{ i + 1 }}. {{ item }}
+          </div>
+
+          <h3>Finales</h3>
+
+          <div
+            class="option"
+            *ngFor="let item of msg.data.finales; let i = index"
+          >
+            {{ i + 1 }}. {{ item }}
+          </div>
+
+        </div>
+
+        <!-- CARGA -->
+        <div
+          class="ia-message ia-loading"
+          *ngIf="msg.type === 'ia' && msg.data?.loading"
+        >
+          <div class="loading-content">
+            <span class="spinner"></span>
+            <span>Analizando tu sueño y creando opciones...</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-area">
+
+      <input
+        type="text"
+        [(ngModel)]="dream"
+        placeholder="Describe tu sueño..."
+        (keyup.enter)="generarOpciones()"
+      />
+
+      <button (click)="generarOpciones()">
+        ➤
+      </button>
+
+    </div>
+
+  </div>
+
+  <div
+    class="resize-handle resize-handle-left"
+    (mousedown)="onResizeStart($event, 'left')"
+  ></div>
+
+</div>
+
+  <!-- SIDEBAR PUBLICAR -->
+  <div class="sidebar-right" [class.open]="rightOpen" #sidebarRight>
+
+    <button class="close-btn-right" (click)="closeRight()">
+      ❯
+    </button>
+
+    <h2>Publicar</h2>
+
+    <div class="form">
+
+      <input
+        type="text"
+        placeholder="Autor"
+        id="authorInput"
+        [(ngModel)]="author"
+        (ngModelChange)="errorMessage = ''"
+        name="author"
+      >
+
+      <input
+        type="text"
+        placeholder="Título"
+        id="titleInput"
+        [(ngModel)]="title"
+        (ngModelChange)="errorMessage = ''"
+        name="title"
+      >
+
+      <textarea
+        placeholder="Contenido"
+        id="contentInput"
+        [(ngModel)]="content"
+        (ngModelChange)="errorMessage = ''"
+        name="content"
+      ></textarea>
+
+      <p class="error-msg" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+
+      <button
+        class="publish-story-btn"
+        type="button"
+        (click)="publish()"
+      >
+        Publicar
+      </button>
+
+    </div>
+
+    <div
+      class="resize-handle resize-handle-right"
+      (mousedown)="onResizeStart($event, 'right')"
+    ></div>
+
+  </div>
+
+</div>
+
+<app-feed></app-feed>

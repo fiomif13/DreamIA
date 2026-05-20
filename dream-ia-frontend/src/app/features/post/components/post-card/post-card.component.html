@@ -1,0 +1,11 @@
+<div class="card">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+        <span>{{ post.nameUser }}</span>
+        <span>{{ post.createdAt | date:'short' }}</span>
+    </div>
+</div>
