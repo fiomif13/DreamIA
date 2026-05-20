@@ -11,8 +11,7 @@
 <div class="sidebars-container">
 
   <!-- SIDEBAR IA -->
-<!-- SIDEBAR IA -->
-<div class="sidebar-left" [class.open]="leftOpen">
+<div class="sidebar-left" [class.open]="leftOpen" #sidebarLeft>
 
   <button class="close-btn-left" (click)="closeLeft()">
     ❮
@@ -38,36 +37,47 @@
         <!-- RESPUESTA IA -->
         <div
           class="ia-message"
-          *ngIf="msg.type === 'ia'"
+          *ngIf="msg.type === 'ia' && !msg.data?.loading"
         >
 
           <h3>Inicios</h3>
 
           <div
             class="option"
-            *ngFor="let item of msg.data.inicios"
+            *ngFor="let item of msg.data.inicios; let i = index"
           >
-            {{ item }}
+            {{ i + 1 }}. {{ item }}
           </div>
 
           <h3>Desarrollos</h3>
 
           <div
             class="option"
-            *ngFor="let item of msg.data.desarrollos"
+            *ngFor="let item of msg.data.desarrollos; let i = index"
           >
-            {{ item }}
+            {{ i + 1 }}. {{ item }}
           </div>
 
           <h3>Finales</h3>
 
           <div
             class="option"
-            *ngFor="let item of msg.data.finales"
+            *ngFor="let item of msg.data.finales; let i = index"
           >
-            {{ item }}
+            {{ i + 1 }}. {{ item }}
           </div>
 
+        </div>
+
+        <!-- CARGA -->
+        <div
+          class="ia-message ia-loading"
+          *ngIf="msg.type === 'ia' && msg.data?.loading"
+        >
+          <div class="loading-content">
+            <span class="spinner"></span>
+            <span>Analizando tu sueño y creando opciones...</span>
+          </div>
         </div>
 
       </div>
@@ -92,10 +102,15 @@
 
   </div>
 
+  <div
+    class="resize-handle resize-handle-left"
+    (mousedown)="onResizeStart($event, 'left')"
+  ></div>
+
 </div>
 
   <!-- SIDEBAR PUBLICAR -->
-  <div class="sidebar-right" [class.open]="rightOpen">
+  <div class="sidebar-right" [class.open]="rightOpen" #sidebarRight>
 
     <button class="close-btn-right" (click)="closeRight()">
       ❯
@@ -108,21 +123,27 @@
       <input
         type="text"
         placeholder="Autor"
-        [value]="author"
-        (input)="author = $any($event.target).value"
+        id="authorInput"
+        [(ngModel)]="author"
+        (ngModelChange)="errorMessage = ''"
+        name="author"
       >
 
       <input
         type="text"
         placeholder="Título"
-        [value]="title"
-        (input)="title = $any($event.target).value"
+        id="titleInput"
+        [(ngModel)]="title"
+        (ngModelChange)="errorMessage = ''"
+        name="title"
       >
 
       <textarea
         placeholder="Contenido"
-        [value]="content"
-        (input)="content = $any($event.target).value"
+        id="contentInput"
+        [(ngModel)]="content"
+        (ngModelChange)="errorMessage = ''"
+        name="content"
       ></textarea>
 
       <p class="error-msg" *ngIf="errorMessage">
@@ -138,6 +159,11 @@
       </button>
 
     </div>
+
+    <div
+      class="resize-handle resize-handle-right"
+      (mousedown)="onResizeStart($event, 'right')"
+    ></div>
 
   </div>
 

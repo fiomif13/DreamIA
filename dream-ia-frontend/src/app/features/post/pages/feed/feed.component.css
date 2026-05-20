@@ -1,7 +1,8 @@
 .feed-container {
-    width: 500px;
-    margin: 100 auto;
-    padding: 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
 }
 
 h2 {

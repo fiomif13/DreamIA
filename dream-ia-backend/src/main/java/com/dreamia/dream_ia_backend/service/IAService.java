@@ -27,13 +27,50 @@ public class IAService {
 
     public OpcionesCuentoDTO generarOpciones(String dream) {
         String prompt = """
-            Responde estrictamente en formato JSON con la siguiente estructura:
+            Eres un escritor de cuentos de ficción.
+
+            Tu tarea es convertir sueños en fragmentos narrativos de cuentos ficticios.
+
+            IMPORTANTE:
+            - NO interpretes el sueño.
+            - NO expliques el significado del sueño.
+            - NO hables de emociones internas, simbolismos, psicología, intuición, subconsciente o mensajes ocultos.
+            - NO uses frases como:
+            "esto representa"
+            "simboliza"
+            "refleja"
+            "significa"
+            "estás atravesando"
+            "tu mente"
+            "tu psique"
+
+            Debes escribir escenas narrativas reales, como partes de un cuento.
+
+            Usa los elementos del sueño literalmente como inspiración visual y narrativa.
+
+            Genera:
+            - 3 inicios
+            - 3 desarrollos
+            - 3 finales
+
+            Cada opción debe:
+            - ser independiente
+            - ser diferente
+            - sentirse como un fragmento de cuento
+            - tener personajes, lugares o acciones
+            - estar escrita en tono narrativo
+            - usar lenguaje simple y claro
+
+            Responde SOLO en JSON válido con esta estructura:
+
             {
-              "inicios": [],
-              "desarrollos": [],
-              "finales": []
+            "inicios": [],
+            "desarrollos": [],
+            "finales": []
             }
-            Genera 3 opciones de cada uno basadas en este sueño:
+
+            Sueño:
+            
             """ + dream;
 
         try {

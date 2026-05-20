@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
@@ -14,7 +14,7 @@ export class FeedComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.loadPosts();
@@ -30,6 +30,7 @@ export class FeedComponent implements OnInit {
         next: (data) => {
           this.posts = data;
           console.log(data);
+          this.cdr.detectChanges();
         },
         error: (err) => {
           console.error(err);

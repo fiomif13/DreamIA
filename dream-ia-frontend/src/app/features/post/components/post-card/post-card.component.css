@@ -1,94 +1,47 @@
-.card { /* selector { propiedades: valores} */
-  max-width: 500px;   /* Define el ancho MÁXIMO que puede tener el elemento */
-  width: 100%;        /*  Hace que el elemento intente ocupar el 100% del espacio disponible. */
-  margin: 60px auto 15px auto; 
-  /* Propiedad margin:
-     Agrega espacio EXTERNO alrededor del elemento.
-
-     Los valores van en este orden:
-     arriba | derecha | abajo | izquierda
-
-     60px = espacio arriba
-     auto = centra horizontalmente
-     15px = espacio abajo
-     auto = centra horizontalmente otra vez
-
-     El "auto" funciona para centrar porque el ancho ya está definido. */
-
-  background: #D9D9D9; /* Cambia el color de fondo del elemento. */
-  padding: 20px;
-  /* Propiedad padding:
-     Agrega espacio INTERNO entre el contenido y el borde.
-     Hace que el texto no quede pegado a los bordes. */
-
-  border-radius: 12px;
-  /* Propiedad border-radius:
-     Redondea las esquinas.
-     Mientras más alto el número, más redondeado. */
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  /* Propiedad box-shadow:
-     Agrega sombra alrededor del elemento.
-
-     Valores:
-     0 = desplazamiento horizontal
-     4px = desplazamiento vertical
-     10px = desenfoque
-     rgba(...) = color de la sombra
-
-     rgba significa:
-     red, green, blue, alpha(transparencia) */
-
-  margin-bottom: 10px;
-  /* Propiedad margin-bottom:
-     Agrega espacio SOLO debajo del elemento.
-
-     Ojo:
-     Aquí estás sobrescribiendo parcialmente el margin anterior.
-     Porque antes ya habías puesto margin con 15px abajo. */
+.card {
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto;
+  background: #f3f4f6;
+  padding: 24px;
+  border-radius: 20px;
+  border: 0px solid #161514;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card h3 { /* Selector:
-     Aplica estilos SOLO a los h3 que estén dentro de .card */
-
-  margin: 0 0 10px 0;
-  /* Espacio externo:
-     arriba 0
-     derecha 0
-     abajo 10px
-     izquierda 0 */
-
-  font-size: 18px;
-   /* Tamaño de letra:
-     18px significa que el texto será más grande */
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #2d2f31a2;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
 }
 
-.card p {/* Selector:
-     Aplica estilos SOLO a los párrafos <p> dentro de .card */
+.card h3 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #3d3529;
+  letter-spacing: -0.02em;
+}
 
-  margin: 0 0 10px 0; /* Espacio debajo del párrafo para separarlo */
-
-  color: #333;
+.card p {
+  margin: 0 0 20px 0;
+  color: #111827;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 .footer {
-   /* Selector:
-     Aplica estilos a elementos con class="footer" */
-
-  display: flex; 
-  /* Propiedad display:flex:
-     Activa Flexbox.
-     Hace más fácil acomodar elementos horizontalmente. */
-
+  display: flex;
   justify-content: space-between;
-   /* Propiedad justify-content:
-     Distribuye elementos horizontalmente.
+  align-items: center;
+  font-size: 13px;
+  color: #3d3529;
+  border-top: 1px solid #a4a09e;
+  padding-top: 16px;
+}
 
-     space-between:
-     pone uno a la izquierda y otro a la derecha,
-     dejando espacio en medio. */
-
-  font-size: 12px;
-  /* Tamaño de texto pequeño */
-  color: gray;
+.footer span:first-child {
+  font-weight: 600;
+  color: #3d3529;
 }
