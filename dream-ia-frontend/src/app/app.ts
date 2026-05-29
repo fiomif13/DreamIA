@@ -127,7 +127,7 @@ export class App {
     this.dream = '';
 
     this.http.post<any>(
-      'http://localhost:8080/api/posts/opciones',
+      'https://dreamia-1.onrender.com/api/posts/opciones',
       { dream: userMessage }
     ).subscribe({
       next: (res) => {

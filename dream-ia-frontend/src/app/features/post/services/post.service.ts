@@ -9,7 +9,7 @@ import { CreatePost } from '../models/post.model';
 })
 export class PostService {
 
-  private apiUrl = 'http://localhost:8080/api/posts';
+  private apiUrl = 'https://dreamia-1.onrender.com/api/posts';
 
   private refreshSubject = new Subject<void>();
   refresh$ = this.refreshSubject.asObservable();

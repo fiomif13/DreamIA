@@ -14,7 +14,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/posts")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
     // clase PostService que creé en el archivo PostService
     // Esta clase tiene una variable llamada postService que guardará un objeto tipo PostService

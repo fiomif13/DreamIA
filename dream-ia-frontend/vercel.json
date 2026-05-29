@@ -1,0 +1,9 @@
+{
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/dream-ia-frontend/browser",
+  "installCommand": "npm install",
+  "framework": "angular",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
